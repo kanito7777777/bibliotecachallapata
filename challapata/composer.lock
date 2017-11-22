@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "75ba431fb4ccf48ce8a358d938bb8d86",
+    "content-hash": "8bd9f3280f2c7b8f0d5ceb23d50af8c7",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1042,6 +1042,39 @@
                 "uuid"
             ],
             "time": "2017-09-22T20:46:04+00:00"
+        },
+        {
+            "name": "roland/crud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/roladn/laravelcrud.git",
+                "reference": "c5a6c045801ae3038b95eda9a72f2ff3f0134181"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/roladn/laravelcrud/zipball/c5a6c045801ae3038b95eda9a72f2ff3f0134181",
+                "reference": "c5a6c045801ae3038b95eda9a72f2ff3f0134181",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roland\\Crud\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Alla",
+                    "email": "alla.roland@gmail.com"
+                }
+            ],
+            "description": "This is a CRUD generator for Laravel 5.4",
+            "time": "2017-10-25T10:59:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3422,7 +3455,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "roland/crud": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -75,10 +75,31 @@
             </div>
         </nav>
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">@yield('subtitulo')</div>
+
+                <div class="panel-body">
+
+
         @yield('content')
+
+                </div>
+            </div>
+        </div>
+    </div>
+</di
+
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    @yield('scripts')
 </body>
 </html>
