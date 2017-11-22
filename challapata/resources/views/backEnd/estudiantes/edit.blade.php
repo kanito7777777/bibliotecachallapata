@@ -1,11 +1,11 @@
 @extends('backLayout.app')
 @section('title')
-Edit Estudiante
+Editar Estudiante
 @stop
 
 @section('content')
 
-    <h1>Edit Estudiante</h1>
+    <h1>Editar Estudiante</h1>
     <hr/>
 
     {!! Form::model($estudiante, [
@@ -39,7 +39,7 @@ Edit Estudiante
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Editar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

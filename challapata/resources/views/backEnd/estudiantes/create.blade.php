@@ -1,11 +1,11 @@
 @extends('backLayout.app')
 @section('title')
-Create new Estudiante
+Nuevo Estudiante
 @stop
 
 @section('content')
 
-    <h1>Create New Estudiante</h1>
+    <h1>Nuevo Estudiante</h1>
     <hr/>
 
     {!! Form::open(['url' => 'estudiantes', 'class' => 'form-horizontal']) !!}
@@ -35,8 +35,9 @@ Create new Estudiante
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Aceptar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
+
     </div>
     {!! Form::close() !!}
 

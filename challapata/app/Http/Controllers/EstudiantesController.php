@@ -35,6 +35,16 @@ class EstudiantesController extends Controller
         return view('backEnd.estudiantes.create');
     }
 
+    private function validar(Request $request)
+    {
+        $this->validate($request, 
+            [
+                'ci' => 'required|min:5|max:11|unique:estudiante', 
+                'nombre' => 'required|min:3|max:30', 
+                'apellido' => 'max:50', 
+            ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +52,8 @@ class EstudiantesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['ci' => 'required', 'nombre' => 'required', 'apellido' => 'required', ]);
+
+        $this->validar($request);        
 
         Estudiante::create($request->all());
 
@@ -89,8 +100,8 @@ class EstudiantesController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['ci' => 'required', 'nombre' => 'required', 'apellido' => 'required', ]);
-
+        $this->validar($request);        
+        
         $estudiante = Estudiante::findOrFail($id);
         $estudiante->update($request->all());
 
