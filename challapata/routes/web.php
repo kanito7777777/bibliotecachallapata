@@ -22,3 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('estudiantes', 'EstudiantesController');
 });
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('posts', 'App\\PostsController');
+});

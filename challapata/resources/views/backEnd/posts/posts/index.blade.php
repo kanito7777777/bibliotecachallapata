@@ -1,29 +1,28 @@
 @extends('backLayout.app')
 @section('title')
-Estudiante
+Post
 @stop
 
 @section('content')
-   
 
-    <h1>Estudiantes <a href="{{ url('estudiantes/create') }}" class="btn btn-primary pull-right btn-sm">Nuevo Estudiante</a></h1>
+    <h1>Posts <a href="{{ url('posts/create') }}" class="btn btn-primary pull-right btn-sm">Add New Post</a></h1>
     <div class="table table-responsive">
-        <table class="table table-bordered table-striped table-hover" id="tblestudiantes">
+        <table class="table table-bordered table-striped table-hover" id="tblposts">
             <thead>
                 <tr>
-                    <th>ID</th><th>Ci</th><th>Nombre</th><th>Apellido</th><th>Actions</th>
+                    <th>ID</th><th>Title</th><th>Body</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-            @foreach($estudiantes as $item)
+            @foreach($posts as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('estudiantes', $item->id) }}">{{ $item->ci }}</a></td><td>{{ $item->nombre }}</td><td>{{ $item->apellido }}</td>
+                    <td><a href="{{ url('posts', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->body }}</td>
                     <td>
-                        <a href="{{ url('estudiantes/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
+                        <a href="{{ url('posts/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['estudiantes', $item->id],
+                            'url' => ['posts', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -40,7 +39,7 @@ Estudiante
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#tblestudiantes').DataTable({
+        $('#tblposts').DataTable({
             columnDefs: [{
                 targets: [0],
                 visible: false,
