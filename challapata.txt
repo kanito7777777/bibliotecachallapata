@@ -1,0 +1,10 @@
+Sistema Web para la administracion de la biblioteca de la unidad desconcentrada de la localidad de Challapata
+Facultad Nacional de Ingenieria
+Carrera de Ingenieria de Sistemas e Ingenieria Informatica
+Oruro/Bolivia
+
+
+Team:
+	Product Owner: Saul Mamani M.
+	Scrum Master: Ariel Roymer Ticona
+
