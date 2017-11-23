@@ -1,17 +1,18 @@
 @extends('backLayout.app')
 @section('title')
-Edit Materiale
+Editar Material
 @stop
 
 @section('content')
 
-    <h1>Edit Materiale</h1>
+    <h1>Editar Material</h1>
     <hr/>
 
     {!! Form::model($materiale, [
         'method' => 'PATCH',
         'url' => ['materiales', $materiale->id],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'files' => true
     ]) !!}
 
                 <div class="form-group {{ $errors->has('codigo') ? 'has-error' : ''}}">
@@ -45,14 +46,14 @@ Edit Materiale
             <div class="form-group {{ $errors->has('tipo') ? 'has-error' : ''}}">
                 {!! Form::label('tipo', 'Tipo: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('tipo', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('tipo', array('Libro'=>'Libro','Revista'=>'Revista'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('portada') ? 'has-error' : ''}}">
                 {!! Form::label('portada', 'Portada: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('portada', null, ['class' => 'form-control']) !!}
+                    {!! Form::file('portada', null) !!}
                     {!! $errors->first('portada', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -72,7 +73,7 @@ Edit Materiale
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Aceptar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

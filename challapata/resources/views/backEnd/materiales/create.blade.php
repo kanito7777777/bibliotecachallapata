@@ -1,14 +1,14 @@
 @extends('backLayout.app')
 @section('title')
-Create new Materiale
+Nuevo Material
 @stop
 
 @section('content')
 
-    <h1>Create New Materiale</h1>
+    <h1>Nuevo Material</h1>
     <hr/>
 
-    {!! Form::open(['url' => 'materiales', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => 'materiales', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 <div class="form-group {{ $errors->has('codigo') ? 'has-error' : ''}}">
                 {!! Form::label('codigo', 'Codigo: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -41,14 +41,15 @@ Create new Materiale
             <div class="form-group {{ $errors->has('tipo') ? 'has-error' : ''}}">
                 {!! Form::label('tipo', 'Tipo: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('tipo', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('tipo',array('Libro'=>'Libro','Revista'=>'Revista'), 'Libro' , ['class' => 'form-control']) !!}
+
                     {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('portada') ? 'has-error' : ''}}">
                 {!! Form::label('portada', 'Portada: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('portada', null, ['class' => 'form-control']) !!}
+                    {!! Form::file('portada', null) !!}
                     {!! $errors->first('portada', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -56,10 +57,10 @@ Create new Materiale
                 {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
-                <label>{!! Form::radio('estado', '1') !!} Yes</label>
+                <label>{!! Form::radio('estado', '1', true) !!} Yes</label>
             </div>
             <div class="checkbox">
-                <label>{!! Form::radio('estado', '0', true) !!} No</label>
+                <label>{!! Form::radio('estado', '0') !!} No</label>
             </div>
                     {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
                 </div>
@@ -68,7 +69,7 @@ Create new Materiale
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Aceptar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

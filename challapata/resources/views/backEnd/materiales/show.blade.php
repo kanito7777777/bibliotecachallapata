@@ -1,21 +1,41 @@
 @extends('backLayout.app')
 @section('title')
-Materiale
+Material
 @stop
 
 @section('content')
 
-    <h1>Materiale</h1>
+    <h1>Material</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID.</th> <th>Codigo</th><th>Titulo</th><th>Autor</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
-                    <td>{{ $materiale->id }}</td> <td> {{ $materiale->codigo }} </td><td> {{ $materiale->titulo }} </td><td> {{ $materiale->autor }} </td>
+                    <th>ID.</th>
+                    <th> {{ $materiale->id }}</th> 
+                </tr>
+                <tr>
+                    <th>Codigo</th>
+                    <td> {{ $materiale->codigo }} </td>
+                </tr>
+                <tr>
+                    <th>Titulo</th>
+                    <td> {{ $materiale->titulo }} </td>
+                </tr>
+                <tr>
+                    <th>Autor</th>
+                    <td> {{ $materiale->autor }} </td>
+                </tr>
+                <tr>
+                    <th>Descripcion</th>
+                    <td> {{ $materiale->descripcion }} </td>
+                </tr>
+                <tr>
+                    <th>Tipo</th>
+                    <td> {{ $materiale->tipo }} </td>
+                </tr>
+                <tr>
+                    <th>Portada</th>
+                    <td> <img src="{{ $materiale->portada }}" alt="" class="img-rounded"> </td>
                 </tr>
             </tbody>    
         </table>
