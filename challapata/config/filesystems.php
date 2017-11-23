@@ -43,6 +43,12 @@ return [
 
     'disks' => [
 
+        //carpeta para portadas
+        'imgPortadas' => [
+            'driver' => 'local',
+            'root' => public_path('imgPortadas'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
