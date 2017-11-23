@@ -35,7 +35,7 @@ Material
                 </tr>
                 <tr>
                     <th>Portada</th>
-                    <td> <img src="{{ $materiale->portada }}" alt="" class="img-rounded"> </td>
+                    <td> <img src="{{ '/imgPortadas/'. $materiale->portada }}" alt=""  width="200" height="300"> </td>
                 </tr>
             </tbody>    
         </table>

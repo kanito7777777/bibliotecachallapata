@@ -47,9 +47,9 @@ Nuevo Material
                 </div>
             </div>
             <div class="form-group {{ $errors->has('portada') ? 'has-error' : ''}}">
-                {!! Form::label('portada', 'Portada: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('portadaImg', 'Portada: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::file('portada', null) !!}
+                    {!! Form::file('portadaImg', null) !!}
                     {!! $errors->first('portada', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
