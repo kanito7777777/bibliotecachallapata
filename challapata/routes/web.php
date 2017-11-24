@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
@@ -29,3 +29,5 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('listamateriales', 'ConsultasController@lista_materiales')->middleware('auth');;
 Route::get('listaprestados', 'ConsultasController@lista_prestados')->middleware('auth');;
 Route::get('listanoprestados', 'ConsultasController@lista_no_prestados')->middleware('auth');;
+
+Route::get('/', 'ConsultasController@lista_materiales');

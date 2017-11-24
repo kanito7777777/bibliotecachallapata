@@ -5,7 +5,7 @@ Lista de Materiales
 
 @section('content')
 
-    <h1>Lista de Materiales</h1>
+    <h1>Lista de Libros y Revistas</h1>
     <hr>
     <div class="table table-responsive">
         <table class="table table-bordered table-striped table-hover" id="tblmateriales">
@@ -15,10 +15,15 @@ Lista de Materiales
                     <th>Codigo</th>
                     <th>Titulo</th>
                     <th>Autor</th>
+                    @if (Auth::guest())
+                    <th>Descripcion</th>
+                    @endif
                     <th>Tipo</th>
                     <th>Obs</th>
+                    @if (Auth::check())
                     <th>Dias</th>
                     <th></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,19 +37,27 @@ Lista de Materiales
                     </td>
                     <td>{{ $item->titulo }}</td>
                     <td>{{ $item->autor }}</td>
+                    @if (Auth::guest())
+                    <td>{{ $item->descripcion }}</td>
+                    @endif
                     <td>{{ $item->tipo }}</td>
-					
+
 					@if (isset($item->idPrestamo))
                     	<td><span class="label label-danger">{{ $item->obs }}</span> <br>
+
+                        @if (Auth::check())
 							{{ 'fecha: '. $item->fecha }} <br>
-							{{ 'Est: '.$item->ci  }}
+							{{ 'A: '.$item->ci  }}
 							{{ $item->aquien }} <br>
 							{{ $item->observacion }}
+                        @endif
+
                     	</td>
 					@else
                     	<td><span class="label label-success">{{ $item->obs }}</span></td>
 					@endif
-					
+		
+                @if (Auth::check())			
 					@if($item->diasPrestados > 2)
 						<td><span class="label label-danger">{{ $item->diasPrestados }}</span></td>
 					@else
@@ -54,9 +67,10 @@ Lista de Materiales
 
                     <td>
                     @if (!isset($item->idPrestamo))
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Realizar Prestamo</a> 
+                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary">Realizar Prestamo</a> 
                     @endif
                     </td>
+                @endif
                 </tr>
             @endforeach
             </tbody>
