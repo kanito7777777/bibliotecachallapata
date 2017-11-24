@@ -35,9 +35,8 @@ class ConsultasController extends Controller
 		        where p.estado = 'Prestado'
 		     ) as t on m.id = t.fkMaterial
 		where m.estado = ? and t.id is not null";
-        $libros = DB::select($query,[1]);
-        dd($libros);
-        //return view('backEnd.estudiantes.index', compact('estudiantes'));
+        $materiales = DB::select($query,[1]);
+        return view('backEnd.listas.listadevoluciones', compact('materiales'));
     }
     public function lista_no_prestados()
     {
