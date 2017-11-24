@@ -15,9 +15,6 @@ Materiales Prestados
                     <th>Codigo</th>
                     <th>Titulo</th>
                     <th>Autor</th>
-                    @if (Auth::guest())
-                    <th>Descripcion</th>
-                    @endif
                     <th>Tipo</th>
                     <th>Obs</th>
                     @if (Auth::check())
@@ -37,27 +34,14 @@ Materiales Prestados
                     </td>
                     <td>{{ $item->titulo }}</td>
                     <td>{{ $item->autor }}</td>
-                    @if (Auth::guest())
-                    <td>{{ $item->descripcion }}</td>
-                    @endif
                     <td>{{ $item->tipo }}</td>
-
-					@if (isset($item->idPrestamo))
-                    	<td><span class="label label-danger">{{ $item->obs }}</span> <br>
-
-                        @if (Auth::check())
-							{{ 'fecha: '. $item->fecha }} <br>
-							{{ 'A: '.$item->ci  }}
-							{{ $item->aquien }} <br>
-							{{ $item->observacion }}
-                        @endif
-
-                    	</td>
-					@else
-                    	<td><span class="label label-success">{{ $item->obs }}</span></td>
-					@endif
-		
-                @if (Auth::check())			
+                	<td><span class="label label-danger">{{ $item->obs }}</span> <br>
+						{{ 'fecha: '. $item->fecha }} <br>
+						{{ 'A: '.$item->ci  }}
+						{{ $item->aquien }} <br>
+						{{ 'Obs: '.$item->observacion }}
+                	</td>
+				
 					@if($item->diasPrestados > 2)
 						<td><span class="label label-danger">{{ $item->diasPrestados }}</span></td>
 					@else
@@ -66,11 +50,8 @@ Materiales Prestados
                     @endif
 
                     <td>
-                    @if (!isset($item->idPrestamo))
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary">Realizar Prestamo</a> 
-                    @endif
+                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-warning">Devolver</a> 
                     </td>
-                @endif
                 </tr>
             @endforeach
             </tbody>

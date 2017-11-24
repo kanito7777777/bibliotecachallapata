@@ -49,7 +49,7 @@ Lista de Materiales
 							{{ 'fecha: '. $item->fecha }} <br>
 							{{ 'A: '.$item->ci  }}
 							{{ $item->aquien }} <br>
-							{{ $item->observacion }}
+							{{ 'Obs: '.$item->observacion }}
                         @endif
 
                     	</td>

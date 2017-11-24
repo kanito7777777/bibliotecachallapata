@@ -37,7 +37,7 @@
 						 <li><a href="{{ route('login') }}">Login</a></li>
 					@else
 						<li><a href="{{ url('listamateriales') }}">Prestamos</a></li>
-                        <li><a href="{{ url('devoluciones') }}">Devoluciones</a></li>
+                        <li><a href="{{ url('listaprestados') }}">Devoluciones</a></li>
                         <li><a href="{{ url('materiales') }}">Materiales</a></li>
                         <li><a href="{{ url('estudiantes') }}">Estudiantes</a></li>
 
