@@ -39,11 +39,13 @@ class EstudiantesController extends Controller
         return view('backEnd.estudiantes.create');
     }
 
-    private function validar(Request $request)
+    private function validar(Request $request, $op)
     {
+         $regla = ($op == 'nuevo')? 'required|min:5|max:11|unique:estudiante' : 'required|min:5|max:11';
+
         $this->validate($request, 
             [
-                'ci' => 'required|min:5|max:11|unique:estudiante', 
+                'ci' => $regla, 
                 'nombre' => 'required|min:3|max:30', 
                 'apellido' => 'max:50', 
             ]);
@@ -57,7 +59,7 @@ class EstudiantesController extends Controller
     public function store(Request $request)
     {
 
-        $this->validar($request);        
+        $this->validar($request, 'nuevo');        
 
         Estudiante::create($request->all());
 
@@ -104,7 +106,7 @@ class EstudiantesController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validar($request);        
+        $this->validar($request, 'editar');        
         
         $estudiante = Estudiante::findOrFail($id);
         $estudiante->update($request->all());
