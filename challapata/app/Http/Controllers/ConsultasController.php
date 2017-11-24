@@ -9,6 +9,8 @@ class ConsultasController extends Controller
 {
     public function lista_materiales()
     {
+    	$this->middleware('auth');
+    	
 		$query = "select m.*, if(t.id is null, 'libre', 'prestado') as obs,
 			   t.id as idPrestamo, t.ci, t.aquien, t.fecha, t.observacion, datediff(current_date(), t.fecha) as diasPrestados
 		from material m left join 

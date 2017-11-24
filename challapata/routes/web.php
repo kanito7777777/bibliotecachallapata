@@ -26,6 +26,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('materiales', 'MaterialesController');
 });
 
-Route::get('listamateriales', 'ConsultasController@lista_materiales');
-Route::get('listaprestados', 'ConsultasController@lista_prestados');
-Route::get('listanoprestados', 'ConsultasController@lista_no_prestados');
+Route::get('listamateriales', 'ConsultasController@lista_materiales')->middleware('auth');;
+Route::get('listaprestados', 'ConsultasController@lista_prestados')->middleware('auth');;
+Route::get('listanoprestados', 'ConsultasController@lista_no_prestados')->middleware('auth');;

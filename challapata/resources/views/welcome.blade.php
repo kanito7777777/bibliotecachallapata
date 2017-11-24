@@ -78,7 +78,7 @@
             @endif
 
             <div class="content">
-                <h3>Aqui viene la busqueda de los libros y revistas</h3>
+                <h3>Aplicacion web para la biblioteca de la carrera de Ingenieria de Sistemas e Ingenieria Informatica de la sub sede Challapata</h3>
             </div>
         </div>
     </body>
