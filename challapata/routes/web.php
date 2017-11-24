@@ -25,3 +25,5 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('materiales', 'MaterialesController');
 });
+
+Route::get('consultas', 'ConsultasController@lista_materiales');
