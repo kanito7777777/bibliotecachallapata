@@ -31,3 +31,6 @@ Route::get('listaprestados', 'ConsultasController@lista_prestados')->middleware(
 Route::get('listanoprestados', 'ConsultasController@lista_no_prestados')->middleware('auth');;
 
 Route::get('/', 'ConsultasController@lista_materiales');
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('prestamos', 'PrestamosController');
+});
