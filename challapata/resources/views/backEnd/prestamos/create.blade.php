@@ -1,22 +1,42 @@
 @extends('backLayout.app')
 @section('title')
-Create new Prestamo
+Prestamos
 @stop
 
 @section('content')
 
-    <h1>Create New Prestamo</h1>
+    <h1>Prestamo de Libros</h1>
     <hr/>
 
+<div class="container">
+    <div class="row">
+    <div class="col col-md-6">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <th>Codigo</th>
+                        <td> {{ $materiale->codigo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td> {{ $materiale->titulo }} </td>
+                    </tr>
+                    <tr>
+                        <th>Autor</th>
+                        <td> {{ $materiale->autor }} </td>
+                    </tr>
+                </tbody>    
+            </table>
+        </div>
+    </div>
+    
+    <div class="col col-md-6">
     {!! Form::open(['url' => 'prestamos', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}}">
-                {!! Form::label('fecha', 'Fecha: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::input('datetime-local', 'fecha', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+            <input type="hidden" name="fkMaterial" value="{{ $materiale->id }}">
+            <input type="hidden" name="fkEstudiante" value="2">
+
             <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
                 {!! Form::label('observacion', 'Observacion: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -24,35 +44,16 @@ Create new Prestamo
                     {!! $errors->first('observacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('estado') ? 'has-error' : ''}}">
-                {!! Form::label('estado', 'Estado: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('estado', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('fkMaterial') ? 'has-error' : ''}}">
-                {!! Form::label('fkMaterial', 'Fkmaterial: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::number('fkMaterial', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fkMaterial', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('fkEstudiante') ? 'has-error' : ''}}">
-                {!! Form::label('fkEstudiante', 'Fkestudiante: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::number('fkEstudiante', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fkEstudiante', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-
+            
     <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+        <div class="col-sm-offset-3 col-sm-6">
+            {!! Form::submit('Realizar Prestamo', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}
+    </div>
+    </div>
+</div>
 
     @if ($errors->any())
         <ul class="alert alert-danger">

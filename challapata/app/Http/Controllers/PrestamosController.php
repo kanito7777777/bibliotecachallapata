@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Prestamo;
+use App\Material;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -30,9 +31,11 @@ class PrestamosController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('backEnd.prestamos.create');
+        $materiale = Material::findOrFail($id);
+
+        return view('backEnd.prestamos.create', compact('materiale'));
     }
 
     /**
@@ -42,14 +45,18 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['fecha' => 'required', 'estado' => 'required', 'fkMaterial' => 'required', 'fkEstudiante' => 'required', ]);
+        //Prestamo::create($request->all());
+        $datos = $request->all();
+        $datos += ['fecha' => new \DateTime()];
+        $datos += ['estado' => 'Prestado'];
 
-        Prestamo::create($request->all());
+       // dd($datos);
+        Prestamo::create($datos);
 
-        Session::flash('message', 'Prestamo added!');
+        Session::flash('message', 'Prestamo registrado correctamente!');
         Session::flash('status', 'success');
 
-        return redirect('prestamos');
+        return redirect('listamateriales');
     }
 
     /**
