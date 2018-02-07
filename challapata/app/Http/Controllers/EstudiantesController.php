@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Estudiante;
+use App\Material;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -136,4 +137,17 @@ class EstudiantesController extends Controller
         return redirect('estudiantes');
     }
 
+    public function abrirBuscarEstudiante()
+    {
+        return view('backEnd.listas.buscarEstudiante');
+    }
+
+    public function buscarEstudiante($id, $ci)
+    {
+        $estudiante = Estudiante::Where('ci', '=', $ci)->first();
+        $materiale = Material::findOrFail($id);
+
+        //dd($estudiante);
+        return view('backEnd.prestamos.create', compact(['materiale','estudiante']));
+    }
 }

@@ -5,8 +5,8 @@ Prestamos
 
 @section('content')
 
-    <h1>Prestamo de Libros</h1>
-    <hr/>
+<h1>Prestamo de Libros</h1>
+<hr/>
 
 <div class="container">
     <div class="row">
@@ -32,10 +32,37 @@ Prestamos
     </div>
     
     <div class="col col-md-6">
+
+    <!-- buscar estudiante -->
+    <div class="navbar-form">
+        <div class="form-group">
+            {!! Form::label('txtBuscar', 'CI del Estudiante: ', ['class' => ' control-label']) !!}
+
+            {!! Form::text('txtBuscar', null, ['class' => 'form-control', 'required' => 'required']) !!}
+        </div>
+            <button class="btn btn-success" onclick="buscar();">Buscar</button>
+        <hr>
+            
+            @if(isset($estudiante) && !empty($estudiante))
+            <div class="alert alert-success"> 
+                Estudiante: {{ $estudiante->nombre.' '.$estudiante->apellido }}<br/>
+                Ci: {{ $estudiante->ci }}
+            </div>
+            @else
+            <div class="alert alert-danger">Ningun estudiante encontrado</div>
+            @endif
+
+        <hr>
+    </div>
+    <!-- end buscar estudiante -->
+
     {!! Form::open(['url' => 'prestamos', 'class' => 'form-horizontal']) !!}
 
             <input type="hidden" name="fkMaterial" value="{{ $materiale->id }}">
-            <input type="hidden" name="fkEstudiante" value="2">
+            
+            @if(isset($estudiante) && !empty($estudiante))
+            <input type="hidden" name="fkEstudiante" value="{{ $estudiante->id }}">
+            @endif
 
             <div class="form-group {{ $errors->has('observacion') ? 'has-error' : ''}}">
                 {!! Form::label('observacion', 'Observacion: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -64,3 +91,14 @@ Prestamos
     @endif
 
 @endsection
+
+<script type="text/javascript">
+function buscar(){
+    var ci = document.getElementById("txtBuscar").value;
+
+    var url = "{{ url('buscarestudiante/'.$materiale->id.'/:ci') }}";
+
+    url = url.replace(":ci", ci);
+    window.location = url;
+}
+</script>
