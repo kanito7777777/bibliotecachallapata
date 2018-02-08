@@ -67,7 +67,7 @@ Lista de Materiales
 
                     <td>
                     @if (!isset($item->idPrestamo))
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary">Realizar Prestamo</a> 
+                        <a href="{{ url('prestamos/create/' . $item->id) }}" class="btn btn-primary">Realizar Prestamo</a> 
                     @endif
                     </td>
                 @endif
