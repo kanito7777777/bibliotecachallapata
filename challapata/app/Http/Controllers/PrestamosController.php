@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -85,11 +86,28 @@ class PrestamosController extends Controller
      *
      * @return Response
      */
+    
+    private function consultaSQL()
+    {
+        $query = "select m.*, if(t.id is null, 'libre', 'prestado') as obs,
+               t.id as idPrestamo, t.ci, t.aquien, t.fecha, t.observacion, datediff(current_date(), t.fecha) as diasPrestados
+        from material m left join 
+             (
+                select p.id, p.fecha, p.observacion, p.fkMaterial,e.ci, concat(e.nombre, ' ', e.apellido) as aquien
+                from prestamo p inner join estudiante e on e.id = p.fkEstudiante 
+                where p.estado = 'Prestado'
+             ) as t on m.id = t.fkMaterial
+        where t.id = ? and m.estado = ? and t.id is not null";
+        return $query;
+    }
+
     public function edit($id)
     {
         $prestamo = Prestamo::findOrFail($id);
+        $materiales = DB::Select($this->consultaSQL(),[$id, 1]);
 
-        return view('backEnd.prestamos.edit', compact('prestamo'));
+
+        return view('backEnd.prestamos.edit', compact(['prestamo','materiales']));
     }
 
     /**
@@ -101,15 +119,19 @@ class PrestamosController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['fecha' => 'required', 'estado' => 'required', 'fkMaterial' => 'required', 'fkEstudiante' => 'required', ]);
-
         $prestamo = Prestamo::findOrFail($id);
-        $prestamo->update($request->all());
+
+        $prestamo->observacion = $request->input('observacion');
+        $prestamo->estado = 'Devuelto';
+        //dd($prestamo);
+
+        $prestamo->save();
+
 
         Session::flash('message', 'Prestamo updated!');
         Session::flash('status', 'success');
 
-        return redirect('prestamos');
+        return redirect('listaprestados');
     }
 
     /**

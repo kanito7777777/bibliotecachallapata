@@ -145,13 +145,13 @@ class EstudiantesController extends Controller
 
     private function consultaSQL()
     {
-        $sql = "select v.*,
+        $query = "select v.*,
                 (select count(p.fkEstudiante) from prestamo p where p.estado = 'Prestado' and p.fkEstudiante = v.fkEstudiante) as cantidad
                 from prestamo v
-                where v.fkEstudiante = ? and v.estado = 'Prestado'
+                where v.fkEstudiante = ?
                 order by v.id desc
                 limit 1";
-        return $sql;
+        return $query;
     }
 
     public function buscarEstudiante($id, $ci)
