@@ -35,7 +35,7 @@ Materiales Prestados
                     <td>{{ $item->titulo }}</td>
                     <td>{{ $item->autor }}</td>
                     <td>{{ $item->tipo }}</td>
-                	<td><span class="label label-danger">{{ $item->obs }}</span> <br>
+                	<td><p><span class="label label-danger">{{ $item->obs }}</span> </p>
 						{{ 'fecha: '. $item->fecha }} <br>
 						{{ 'A: '.$item->ci  }}
 						{{ $item->aquien }} <br>

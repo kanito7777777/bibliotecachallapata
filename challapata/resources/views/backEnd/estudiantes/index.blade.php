@@ -21,14 +21,19 @@ Estudiante
                     <td>{{ $item->id }}</td>
                     <td><a href="{{ url('estudiantes', $item->id) }}">{{ $item->ci }}</a></td><td>{{ $item->nombre }}</td><td>{{ $item->apellido }}</td>
                     <td>
-                        <a href="{{ url('estudiantes/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Editar</a> 
+                        <a href="{{ url('estudiantes/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></a> 
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['estudiantes', $item->id],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return confirm("Realmente desea eliminar el registro?")'
                         ]) !!}
-                            {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!}
+
+                        {!! Form::button('<span class="glyphicon glyphicon-remove"></span>', ['class'=>'btn btn-danger btn-xs', 'type' => 'submit']) !!}
                         {!! Form::close() !!}
+
+
+                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a> 
                     </td>
                 </tr>
             @endforeach

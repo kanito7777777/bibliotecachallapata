@@ -14,8 +14,7 @@ Materiales
                     <th>ID</th><th>Codigo</th><th>Titulo</th><th>Autor</th>
                     <th>Descripcion</th>
                     <th>Tipo</th>
-                    <th>Estado</th>
-                    <th></th>
+                    <th width="115px"></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,16 +24,23 @@ Materiales
                     <td><a href="{{ url('materiales', $item->id) }}">{{ $item->codigo }}</a></td><td>{{ $item->titulo }}</td><td>{{ $item->autor }}</td>
                     <td>{{ $item->descripcion }}</td>
                     <td>{{ $item->tipo }}</td>
-                    <td>{{ $item->estado }}</td>
-                    <td>
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Editar</a> 
+                    <td width="115px">
+                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span></a> 
+
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['materiales', $item->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!}
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return confirm("Realmente desea eliminar el registro?")'
+                        ]) 
+                        !!}
+                        
+                        {!! Form::button('<span class="glyphicon glyphicon-remove"></span>', ['class'=>'btn btn-danger btn-xs', 'type' => 'submit']) !!}
+
                         {!! Form::close() !!}
+                        
+                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a>
+
                     </td>
                 </tr>
             @endforeach
