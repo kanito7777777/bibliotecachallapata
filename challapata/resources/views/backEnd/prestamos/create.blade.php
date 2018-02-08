@@ -50,7 +50,7 @@ Prestamos
                 </div>
                 @if(isset($detalle) && !empty($detalle))
                 <div class="alert alert-danger">
-                    Cantidad Libros Prestados: {{ $detalle->cantidad }} - 
+                    Cantidad Libros Prestados: <strong> {{ $detalle->cantidad }} </strong> - 
                     Ultimo prestamo: {{ $detalle->fecha }} <br> 
                     Obs: {{ $detalle->observacion }}
                 </div>
