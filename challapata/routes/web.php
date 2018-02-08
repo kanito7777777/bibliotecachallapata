@@ -38,4 +38,4 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::get('prestamos/create/{id}', 'PrestamosController@create');
 
-Route::get('buscarestudiante/{id}/{ci}', 'EstudiantesController@buscarEstudiante')->where('id', '[0-9]+')->where('ci', '[0-9]+');
+Route::get('buscarestudiante/{id}/{ci}', 'EstudiantesController@buscarEstudiante');//->where('id', '[0-9]+')->where('ci', '[0-9]+');

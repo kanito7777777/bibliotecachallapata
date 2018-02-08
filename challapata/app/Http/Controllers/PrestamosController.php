@@ -45,18 +45,23 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, 
+            [
+                'fkEstudiante' => 'required', 
+            ]);
+
         //Prestamo::create($request->all());
         $datos = $request->all();
         $datos += ['fecha' => new \DateTime()];
         $datos += ['estado' => 'Prestado'];
 
-        dd($datos);
-        /*Prestamo::create($datos);
+        //dd($datos);
+        Prestamo::create($datos);
 
         Session::flash('message', 'Prestamo registrado correctamente!');
         Session::flash('status', 'success');
 
-        return redirect('listamateriales');*/
+        return redirect('listamateriales');
     }
 
     /**

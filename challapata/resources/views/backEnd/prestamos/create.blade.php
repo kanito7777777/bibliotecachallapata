@@ -44,10 +44,17 @@ Prestamos
         <hr>
             
             @if(isset($estudiante) && !empty($estudiante))
-            <div class="alert alert-success"> 
-                Estudiante: {{ $estudiante->nombre.' '.$estudiante->apellido }}<br/>
-                Ci: {{ $estudiante->ci }}
-            </div>
+                <div class="alert alert-success"> 
+                    Estudiante: {{ $estudiante->nombre.' '.$estudiante->apellido }} - 
+                    Ci: {{ $estudiante->ci }}
+                </div>
+                @if(isset($detalle) && !empty($detalle))
+                <div class="alert alert-danger">
+                    Cantidad Libros Prestados: {{ $detalle->cantidad }} - 
+                    Ultimo prestamo: {{ $detalle->fecha }} <br> 
+                    Obs: {{ $detalle->observacion }}
+                </div>
+                @endif
             @else
             <div class="alert alert-danger">Ningun estudiante encontrado</div>
             @endif
@@ -95,9 +102,10 @@ Prestamos
 <script type="text/javascript">
 function buscar(){
     var ci = document.getElementById("txtBuscar").value;
+    if(ci.trim() === "")
+        ci = '000';
 
     var url = "{{ url('buscarestudiante/'.$materiale->id.'/:ci') }}";
-
     url = url.replace(":ci", ci);
     window.location = url;
 }

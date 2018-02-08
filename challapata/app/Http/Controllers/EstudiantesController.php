@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -142,12 +143,29 @@ class EstudiantesController extends Controller
         return view('backEnd.listas.buscarEstudiante');
     }
 
+    private function consultaSQL()
+    {
+        $sql = "select v.*,
+                (select count(p.fkEstudiante) from prestamo p where p.estado = 'Prestado' and p.fkEstudiante = v.fkEstudiante) as cantidad
+                from prestamo v
+                where v.fkEstudiante = ? and v.estado = 'Prestado'
+                order by v.id desc
+                limit 1";
+        return $sql;
+    }
+
     public function buscarEstudiante($id, $ci)
     {
         $estudiante = Estudiante::Where('ci', '=', $ci)->first();
         $materiale = Material::findOrFail($id);
 
-        //dd($estudiante);
-        return view('backEnd.prestamos.create', compact(['materiale','estudiante']));
+        $idEstudiante = 0;
+        if(! is_null($estudiante))
+           $idEstudiante = $estudiante->id;
+
+        $detalle = DB::SelectOne($this->consultaSQL(),[$idEstudiante]);
+
+        //dd($detalle);
+        return view('backEnd.prestamos.create', compact(['materiale','estudiante','detalle']));
     }
 }
