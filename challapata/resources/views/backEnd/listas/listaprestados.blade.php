@@ -50,7 +50,7 @@ Materiales Prestados
                     @endif
 
                     <td>
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-warning">Devolver</a> 
+                        <a href="{{ url('prestamos/' . $item->idPrestamo . '/edit') }}" class="btn btn-warning">Devolver</a> 
                     </td>
                 </tr>
             @endforeach
