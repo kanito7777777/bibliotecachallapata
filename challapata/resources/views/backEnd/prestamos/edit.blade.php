@@ -63,7 +63,8 @@ Devolver Material
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Devolver Material', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Devolver Material', ['class' => 'btn btn-primary btn-lg']) !!}
+            <a href="{{ url('listaprestados') }}" style="display:inline">(cancelar)</a>
         </div>
     </div>
     {!! Form::close() !!}
