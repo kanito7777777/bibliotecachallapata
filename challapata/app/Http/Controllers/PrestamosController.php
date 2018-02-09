@@ -126,7 +126,8 @@ class PrestamosController extends Controller
     {
         $prestamo = Prestamo::findOrFail($id);
 
-        $prestamo->observacion = $request->input('observacion');
+        $fechaDevol = new \DateTime();
+        $prestamo->observacion = $request->input('observacion').'<br/>Devuelto en Fecha: '. $fechaDevol->format('d/m/Y');
         $prestamo->estado = 'Devuelto';
         //dd($prestamo);
 

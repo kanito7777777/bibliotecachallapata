@@ -33,7 +33,7 @@ Estudiante
                         {!! Form::close() !!}
 
 
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a> 
+                        <a href="{{ url('rephistorialestudiante/'.$item->id) }}" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a> 
                     </td>
                 </tr>
             @endforeach
