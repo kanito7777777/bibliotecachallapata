@@ -1,37 +1,31 @@
 @extends('backLayout.rep')
 @section('titulo_reporte')
-Historial por Estudiante
+Lista de Materiales
 @stop
 
 @section('contenido')
 
-@if(!empty($materiales))
-<p class="text-left">
-	<strong>Estudiante: </strong>{{ $materiales[0]->aquien }}
-</p>
-@endif
-
 	<table class="table table-bordered text-left">
 		<thead>
 			<th>Nro</th>
-			<th>Fecha</th>
-			<th>Observacion</th>
-			<th>Estado</th>
 			<th>Codigo</th>
-			<th>Material</th>
+			<th>Titulo</th>
+			<th>Autor</th>
+			<th>Descripcion</th>
 			<th>Tipo</th>
+			<th>Estado</th>
 		</thead>
 		<tbody>
 			<?php $i = 1 ?>
 			@foreach($materiales as $row)
 			<tr>
 				<td>{{ $i++ }}</td>
-				<td>{{ $row->fecha }}</td>
-				<td>{!! $row->observacion !!}</td>
-				<td>{{ $row->estado }}</td>
 				<td>{{ $row->codigo }}</td>
 				<td>{{ $row->titulo }}</td>
+				<td>{{ $row->autor  }}</td>
+				<td>{{ $row->descripcion }}</td>
 				<td>{{ $row->tipo }}</td>
+				<td>@if($row->estado === 1) {{ 'Alta' }} @else {{ 'Baja' }} @endif</td>
 			</tr>
 			@endforeach
 		</tbody>	

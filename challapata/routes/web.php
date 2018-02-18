@@ -41,3 +41,8 @@ Route::get('prestamos/create/{id}', 'PrestamosController@create');
 Route::get('buscarestudiante/{id}/{ci}', 'EstudiantesController@buscarEstudiante');//->where('id', '[0-9]+')->where('ci', '[0-9]+');
 
 Route::get('rephistorialestudiante/{id}', 'ReportesController@historial_estudiante');
+
+Route::get('rephistorialmaterial/{id}', 'ReportesController@historial_material');
+
+Route::get('replistamateriales', 'ReportesController@lista_material');
+Route::get('repestadistico', 'ReportesController@reporte_estadistico');

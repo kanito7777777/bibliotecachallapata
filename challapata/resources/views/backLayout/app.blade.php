@@ -48,12 +48,12 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ route('logout') }}">
+                                    <a href="javascript:abrirVentana('{{ url('replistamateriales') }}')">
                                         Lista de libros
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}">
+                                    <a href="javascript:abrirVentana('{{ url('repestadistico') }}')">
                                         Estadisticos
                                     </a>
                                 </li>
@@ -104,5 +104,12 @@
 	
 	<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 	@yield('scripts')
+
+	<script type="text/javascript">
+        function abrirVentana(url)
+        {
+            window.open(url,"Reportes", "width=900, height=450, left=200, top=150");
+        }
+    </script>
 </body>
 </html>

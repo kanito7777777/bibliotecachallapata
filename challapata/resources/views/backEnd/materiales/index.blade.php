@@ -39,7 +39,7 @@ Materiales
 
                         {!! Form::close() !!}
                         
-                        <a href="{{ url('materiales/' . $item->id . '/edit') }}" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a>
+                        <a href="javascript:abrirVentana('{{ url('rephistorialmaterial/' . $item->id) }}')" class="btn btn-success btn-xs" title="Historial de prestamos"><span class="glyphicon glyphicon-list"></span> Historial</a>
 
                     </td>
                 </tr>

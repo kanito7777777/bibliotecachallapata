@@ -1,13 +1,13 @@
 @extends('backLayout.rep')
 @section('titulo_reporte')
-Historial por Estudiante
+Historial por Libro
 @stop
 
 @section('contenido')
 
 @if(!empty($materiales))
 <p class="text-left">
-	<strong>Estudiante: </strong>{{ $materiales[0]->aquien }}
+	<strong>Material: </strong>{{ $materiales[0]->codigo }} - {{ $materiales[0]->titulo }}
 </p>
 @endif
 
@@ -15,11 +15,9 @@ Historial por Estudiante
 		<thead>
 			<th>Nro</th>
 			<th>Fecha</th>
+			<th>Estudiante</th>
 			<th>Observacion</th>
 			<th>Estado</th>
-			<th>Codigo</th>
-			<th>Material</th>
-			<th>Tipo</th>
 		</thead>
 		<tbody>
 			<?php $i = 1 ?>
@@ -27,11 +25,9 @@ Historial por Estudiante
 			<tr>
 				<td>{{ $i++ }}</td>
 				<td>{{ $row->fecha }}</td>
+				<td>{{ $row->ci.' - '.$row->aquien }}</td>
 				<td>{!! $row->observacion !!}</td>
 				<td>{{ $row->estado }}</td>
-				<td>{{ $row->codigo }}</td>
-				<td>{{ $row->titulo }}</td>
-				<td>{{ $row->tipo }}</td>
 			</tr>
 			@endforeach
 		</tbody>	
